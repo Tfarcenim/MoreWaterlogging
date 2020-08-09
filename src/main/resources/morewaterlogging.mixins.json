@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "tfar.morewaterlogging.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "morewaterlogging.refmap.json",
+  "mixins": [
+    "BlockMixin",
+    "DyeableBlockMixin",
+    "FillStateContainerMixin",
+    "GetFluidStateMixin",
+    "GetPlacementStateMixin",
+    "HorizontalFaceBlockMixin",
+    "PressurePlateBlockMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
