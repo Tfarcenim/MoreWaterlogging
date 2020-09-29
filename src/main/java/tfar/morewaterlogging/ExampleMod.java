@@ -21,6 +21,7 @@ public class ExampleMod {
                     DragonEggBlock.class,
                     EnchantingTableBlock.class,
                     PressurePlateBlock.class,
+                    SpawnerBlock.class,
                     WeightedPressurePlateBlock.class
             };
 
@@ -30,6 +31,7 @@ public class ExampleMod {
                     BeaconBlock.class,
                     DragonEggBlock.class,
                     EnchantingTableBlock.class,
+                    SpawnerBlock.class,
             };
     public ExampleMod() {
     }

@@ -1,6 +1,9 @@
 package tfar.morewaterlogging.mixin;
 
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.PistonBlock;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
@@ -10,12 +13,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import static tfar.morewaterlogging.DefaultIWaterLoggable.WATERLOGGED;
 
-@Mixin({
-				PressurePlateBlock.class,
-				WeightedPressurePlateBlock.class
-})
-public class PressurePlateBlockMixin extends Block implements IWaterLoggable {
-	public PressurePlateBlockMixin(Properties properties) {
+@Mixin(PistonBlock.class)
+public class PistonBlockMixin extends Block {
+	public PistonBlockMixin(Properties properties) {
 		super(properties);
 	}
 
@@ -25,8 +25,7 @@ public class PressurePlateBlockMixin extends Block implements IWaterLoggable {
 	}
 
 	@Inject(method = "<init>",at = @At("TAIL"))
-	private void injectDefaultState(CallbackInfo ci) {
+	private void injectDefaultState(boolean sticky, Properties properties, CallbackInfo ci) {
 		this.setDefaultState(this.getDefaultState().with(WATERLOGGED,false));
 	}
-
 }

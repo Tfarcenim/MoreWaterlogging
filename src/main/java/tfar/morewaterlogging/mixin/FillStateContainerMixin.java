@@ -21,9 +21,17 @@ import static tfar.morewaterlogging.DefaultIWaterLoggable.WATERLOGGED;
 				EndPortalFrameBlock.class,
 				FenceGateBlock.class,
 				GrindstoneBlock.class,
+				HopperBlock.class,
 				LeavesBlock.class,
 				LecternBlock.class,
-				PressurePlateBlock.class
+				PistonBlock.class,
+				PressurePlateBlock.class,
+				PistonHeadBlock.class,
+				ShulkerBoxBlock.class,
+				StonecutterBlock.class,
+				StructureBlock.class,
+				TurtleEggBlock.class,
+				WeightedPressurePlateBlock.class
 })
 public class FillStateContainerMixin {
 

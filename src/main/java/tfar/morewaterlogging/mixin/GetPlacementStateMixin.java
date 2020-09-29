@@ -16,8 +16,14 @@ import tfar.morewaterlogging.WaterloggingUtils;
 				DoorBlock.class,
 				EndPortalFrameBlock.class,
 				FenceGateBlock.class,
+				HopperBlock.class,
 				LeavesBlock.class,
-				LecternBlock.class
+				LecternBlock.class,
+				PistonBlock.class,
+				ShulkerBoxBlock.class,
+				StructureBlock.class,
+				StonecutterBlock.class,
+				TurtleEggBlock.class
 })
 public class GetPlacementStateMixin {
 

@@ -10,6 +10,7 @@
     "GetFluidStateMixin",
     "GetPlacementStateMixin",
     "HorizontalFaceBlockMixin",
+    "PistonBlockMixin",
     "PressurePlateBlockMixin"
   ],
   "client": [

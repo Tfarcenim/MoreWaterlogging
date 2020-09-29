@@ -13,7 +13,8 @@ import static tfar.morewaterlogging.DefaultIWaterLoggable.WATERLOGGED;
 
 @Mixin({
 				BannerBlock.class,
-				BedBlock.class
+				BedBlock.class,
+				ShulkerBoxBlock.class
 })
 public class DyeableBlockMixin extends Block implements IWaterLoggable {
 	public DyeableBlockMixin(Properties properties) {

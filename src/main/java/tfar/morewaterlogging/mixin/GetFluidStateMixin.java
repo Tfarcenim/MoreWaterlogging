@@ -1,20 +1,12 @@
 package tfar.morewaterlogging.mixin;
 
 import net.minecraft.block.*;
-import net.minecraft.client.gui.screen.MainMenuScreen;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import tfar.morewaterlogging.DefaultIWaterLoggable;
-import tfar.morewaterlogging.WaterloggingUtils;
 
 import static tfar.morewaterlogging.DefaultIWaterLoggable.WATERLOGGED;
 
@@ -33,8 +25,14 @@ import static tfar.morewaterlogging.DefaultIWaterLoggable.WATERLOGGED;
 				EndPortalFrameBlock.class,
 				FenceGateBlock.class,
 				GrindstoneBlock.class,
+				HopperBlock.class,
 				LeavesBlock.class,
-				LecternBlock.class
+				LecternBlock.class,
+				PistonHeadBlock.class,
+				SpawnerBlock.class,
+				StonecutterBlock.class,
+				StructureBlock.class,
+				TurtleEggBlock.class
 })
 public class GetFluidStateMixin extends Block implements IWaterLoggable {
 
