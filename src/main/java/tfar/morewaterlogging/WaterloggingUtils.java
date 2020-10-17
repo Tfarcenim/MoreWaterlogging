@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class WaterloggingUtils {
 
 	public static void modifyState(BlockItemUseContext context, CallbackInfoReturnable<BlockState> cir) {
-		if (cir.getReturnValue() == null)return;
+		if (cir.getReturnValue() == null || !cir.getReturnValue().hasProperty(DefaultIWaterLoggable.WATERLOGGED))return;
 		World world = context.getWorld();
 		BlockPos blockPos = context.getPos();
 		BlockState state = cir.getReturnValue();

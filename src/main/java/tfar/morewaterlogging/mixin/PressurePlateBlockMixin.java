@@ -28,5 +28,4 @@ public class PressurePlateBlockMixin extends Block implements IWaterLoggable {
 	private void injectDefaultState(CallbackInfo ci) {
 		this.setDefaultState(this.getDefaultState().with(WATERLOGGED,false));
 	}
-
 }

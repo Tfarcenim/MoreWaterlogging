@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import tfar.morewaterlogging.DefaultIWaterLoggable;
-import tfar.morewaterlogging.ExampleMod;
+import tfar.morewaterlogging.MoreWaterlogging;
 import tfar.morewaterlogging.WaterloggingUtils;
 
 @Mixin(Block.class)
@@ -18,7 +18,7 @@ public class BlockMixin {
 
 	@Inject(method = "getStateForPlacement",at = @At("TAIL"),cancellable = true)
 	private void modifyState(BlockItemUseContext context, CallbackInfoReturnable<BlockState> cir) {
-		for (Class<?> clazz : ExampleMod.waterlogged_classes_that_dont_override_getPlacementState) {
+		for (Class<?> clazz : MoreWaterlogging.waterlogged_classes_that_dont_override_getPlacementState) {
 			if (clazz.isAssignableFrom(this.getClass())) {
 				WaterloggingUtils.modifyState(context, cir);
 			}
@@ -27,7 +27,7 @@ public class BlockMixin {
 
 	@Inject(method = "fillStateContainer",at = @At("RETURN"))
 	private void injectBlockStates(StateContainer.Builder<Block, BlockState> builder, CallbackInfo ci) {
-		for (Class<?> clazz : ExampleMod.waterlogged_classes_that_dont_override_fillStateContainer) {
+		for (Class<?> clazz : MoreWaterlogging.waterlogged_classes_that_dont_override_fillStateContainer) {
 			if (clazz.isAssignableFrom(this.getClass())) {
 				builder.add(DefaultIWaterLoggable.WATERLOGGED);
 			}

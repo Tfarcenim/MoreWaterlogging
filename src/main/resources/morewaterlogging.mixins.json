@@ -11,7 +11,8 @@
     "GetPlacementStateMixin",
     "HorizontalFaceBlockMixin",
     "PistonBlockMixin",
-    "PressurePlateBlockMixin"
+    "PressurePlateBlockMixin",
+    "StateContainerMixin"
   ],
   "client": [
   ],

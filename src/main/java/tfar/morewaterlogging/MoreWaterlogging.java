@@ -4,8 +4,8 @@ import net.minecraft.block.*;
 import net.minecraftforge.fml.common.Mod;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(ExampleMod.MODID)
-public class ExampleMod {
+@Mod(MoreWaterlogging.MODID)
+public class MoreWaterlogging {
     // Directly reference a log4j logger.
 
     public static final String MODID = "morewaterlogging";
@@ -33,6 +33,6 @@ public class ExampleMod {
                     EnchantingTableBlock.class,
                     SpawnerBlock.class,
             };
-    public ExampleMod() {
+    public MoreWaterlogging() {
     }
 }

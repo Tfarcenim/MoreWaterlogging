@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import tfar.morewaterlogging.DefaultIWaterLoggable;
 
 import static tfar.morewaterlogging.DefaultIWaterLoggable.WATERLOGGED;
 
@@ -16,18 +17,20 @@ import static tfar.morewaterlogging.DefaultIWaterLoggable.WATERLOGGED;
 				BedBlock.class,
 				ShulkerBoxBlock.class
 })
-public class DyeableBlockMixin extends Block implements IWaterLoggable {
+public class DyeableBlockMixin extends Block implements DefaultIWaterLoggable {
 	public DyeableBlockMixin(Properties properties) {
 		super(properties);
 	}
 
 	@Override
 	public FluidState getFluidState(BlockState state) {
-		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+		return state.hasProperty(WATERLOGGED) && state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
 	}
 
 	@Inject(method = "<init>",at = @At("TAIL"))
 	private void injectDefaultState(DyeColor colorIn, Properties properties, CallbackInfo ci) {
-		this.setDefaultState(this.getDefaultState().with(WATERLOGGED,false));
+		if (getDefaultState().hasProperty(WATERLOGGED)) {
+			this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false));
+		}
 	}
 }

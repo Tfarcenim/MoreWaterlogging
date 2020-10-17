@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import tfar.morewaterlogging.DefaultIWaterLoggable;
 
 import static tfar.morewaterlogging.DefaultIWaterLoggable.WATERLOGGED;
 
@@ -34,7 +35,7 @@ import static tfar.morewaterlogging.DefaultIWaterLoggable.WATERLOGGED;
 				StructureBlock.class,
 				TurtleEggBlock.class
 })
-public class GetFluidStateMixin extends Block implements IWaterLoggable {
+public class GetFluidStateMixin extends Block implements DefaultIWaterLoggable {
 
 
 	public GetFluidStateMixin(Properties properties) {
@@ -43,11 +44,13 @@ public class GetFluidStateMixin extends Block implements IWaterLoggable {
 
 	@Override
 	public FluidState getFluidState(BlockState state) {
-		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+		return getDefaultState().hasProperty(WATERLOGGED) ? state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state) : super.getFluidState(state);
 	}
 
 	@Inject(method = "<init>",at = @At("TAIL"))
 	private void injectDefaultState(AbstractBlock.Properties properties, CallbackInfo ci) {
-		this.setDefaultState(this.getDefaultState().with(WATERLOGGED,false));
+		if (getDefaultState().hasProperty(WATERLOGGED)) {
+			this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false));
+		}
 	}
 }
