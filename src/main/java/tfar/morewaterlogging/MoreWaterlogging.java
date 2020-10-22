@@ -2,6 +2,8 @@ package tfar.morewaterlogging;
 
 import net.minecraft.block.*;
 import net.minecraftforge.fml.common.Mod;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MoreWaterlogging.MODID)
@@ -9,6 +11,8 @@ public class MoreWaterlogging {
     // Directly reference a log4j logger.
 
     public static final String MODID = "morewaterlogging";
+
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public static final Class<?>[] waterlogged_classes_that_dont_override_getPlacementState =
             new Class<?>[]{
