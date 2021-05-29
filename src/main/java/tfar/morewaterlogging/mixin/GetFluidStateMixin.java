@@ -4,14 +4,7 @@ import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import tfar.morewaterlogging.DefaultIWaterLoggable;
-import tfar.morewaterlogging.MoreWaterlogging;
-import tfar.morewaterlogging.WaterloggingUtils;
-
-import java.util.HashSet;
 
 @Mixin({
 				AnvilBlock.class,
@@ -47,16 +40,5 @@ public class GetFluidStateMixin extends Block implements DefaultIWaterLoggable {
 	@Override
 	public FluidState getFluidState(BlockState state) {
 		return getDefaultState().hasProperty(WATERLOGGED) ? state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state) : super.getFluidState(state);
-	}
-
-	private static final HashSet<Class<?>> cache = new HashSet<>();
-
-	@Inject(method = "<init>",at = @At("TAIL"))
-	private void injectDefaultState(AbstractBlock.Properties properties, CallbackInfo ci) {
-		if (getDefaultState().hasProperty(WATERLOGGED)) {
-			this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false));
-		} else {
-			WaterloggingUtils.warn(this);
-		}
 	}
 }

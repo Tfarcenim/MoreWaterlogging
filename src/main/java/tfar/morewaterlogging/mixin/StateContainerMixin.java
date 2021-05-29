@@ -12,10 +12,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class StateContainerMixin {
 
     //stop the game from crashing if another mod adds waterlogging to a subclass
-    @Inject(method = "validateProperty",at = @At("HEAD"),cancellable = true)
-    private void disableValidation(Property<?> property, CallbackInfo ci) {
-        if (BlockStateProperties.WATERLOGGED.getName().equals(property.getName())) {
-            ci.cancel();
-        }
-    }
+    //@Inject(method = "validateProperty",at = @At("HEAD"),cancellable = true)
+ //   private void disableValidation(Property<?> property, CallbackInfo ci) {
+  //      if (BlockStateProperties.WATERLOGGED.getName().equals(property.getName())) {
+  ////          ci.cancel();
+ //       }
+  //  }
 }

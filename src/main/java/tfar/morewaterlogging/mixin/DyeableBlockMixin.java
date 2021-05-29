@@ -28,13 +28,4 @@ public class DyeableBlockMixin extends Block implements DefaultIWaterLoggable {
     public FluidState getFluidState(BlockState state) {
         return state.hasProperty(WATERLOGGED) && state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }
-
-    @Inject(method = "<init>", at = @At("TAIL"))
-    private void injectDefaultState(DyeColor colorIn, Properties properties, CallbackInfo ci) {
-        if (getDefaultState().hasProperty(WATERLOGGED)) {
-            this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false));
-        } else {
-            WaterloggingUtils.warn(this);
-        }
-    }
 }
